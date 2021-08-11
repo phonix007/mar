@@ -37,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new HomeFragment();
                         break;
 
+                    case R.id.nav_bitcoin:
+                        fragment = new BitcoinFragment();
+                        break;
+
                     case R.id.nav_book:
                         fragment = new BookFragment();
                         break;
