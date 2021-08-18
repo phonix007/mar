@@ -24,17 +24,24 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_home, container, false);
-        Button qna_btn = (Button) v.findViewById(R.id.qna);
 
-        qna_btn.setOnClickListener(new View.OnClickListener() {
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        view.findViewById(R.id.basic).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), QandN.class);
-                startActivity(intent);
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), Basic_Activity.class));
+            }
+        });
+        view.findViewById(R.id.qna).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), QandN.class));
             }
         });
 
-        return v;
+
+
+        return view;
     }
+
 }
