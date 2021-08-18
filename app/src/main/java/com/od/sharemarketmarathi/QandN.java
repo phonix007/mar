@@ -31,6 +31,7 @@ public class QandN extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qand_n);
 
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         progressDialog.setMessage("loading...");
@@ -51,7 +52,7 @@ public class QandN extends AppCompatActivity {
     }
 
     private void EventChangeListner() {
-        db.collection("questionscoll")
+        db.collection("questionscoll")  // Collection Name
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {

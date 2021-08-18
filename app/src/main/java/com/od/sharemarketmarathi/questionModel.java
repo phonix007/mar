@@ -1,12 +1,10 @@
 package com.od.sharemarketmarathi;
 
 public class questionModel {
+        // User
+    String que,ans;  // same as in firebase
 
-    String que,ans;
-
-    public questionModel(){
-
-    }
+    public questionModel(){}
 
     public questionModel(String que, String ans) {
         this.que = que;
