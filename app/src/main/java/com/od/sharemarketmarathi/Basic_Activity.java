@@ -5,11 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -29,36 +29,47 @@ public class Basic_Activity extends AppCompatActivity {
     ListView listView;
     List<String> title_list, story_list;
     ArrayAdapter<String> adapter;
-
+    MyBasic myBasic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic);
 
-        recyclerView = findViewById(R.id.rv);
+        listView = findViewById(R.id.listView);
+        databaseReference = FirebaseDatabase.getInstance().getReference("basicbook"); //
+        myBasic = new MyBasic();
+        title_list = new ArrayList<>();
+        story_list = new ArrayList<>();
+        adapter = new ArrayAdapter<>(this,R.layout.basic_iteam,R.id.iteamtext,title_list); // what you want to show
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(RecyclerView.VERTICAL);
-
-        recyclerView.setLayoutManager(layoutManager);
-
-        list = new ArrayList<>();
-        BasicAdapter adapter = new BasicAdapter(list);
-        recyclerView.setAdapter(adapter);
-
-        myRef.child("titels").addListenerForSingleValueEvent(new ValueEventListener() { //
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot snapshot1 : snapshot.getChildren()){
-                    list.add(snapshot1.getValue(BasicModel.class)); // passign class for our catergories
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                title_list.clear();
+                story_list.clear();
+
+                for (DataSnapshot ds : dataSnapshot.getChildren()){
+                    myBasic = ds.getValue(MyBasic.class);
+                    title_list.add(myBasic.getTi());
+                    story_list.add(myBasic.getTx());
                 }
-                adapter.notifyDataSetChanged();
+                listView.setAdapter(adapter); // show title on list
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        // When click on any of the textview it will redirect  to the paratiular activity
+                        Intent intent = new Intent(Basic_Activity.this,Basic_Next_Activity.class);
+                        String p = story_list.get(i);
+                        intent.putExtra("key",p);
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(Basic_Activity.this, error.getMessage() , Toast.LENGTH_SHORT).show();
+
             }
         });
 
