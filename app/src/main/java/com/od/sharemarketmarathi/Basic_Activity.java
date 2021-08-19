@@ -27,7 +27,7 @@ public class Basic_Activity extends AppCompatActivity {
 
     DatabaseReference databaseReference;
     ListView listView;
-    List<String> title_list, story_list;
+    List<String> title_list, story_list, img_list;
     ArrayAdapter<String> adapter;
     MyBasic myBasic;
 
@@ -41,19 +41,24 @@ public class Basic_Activity extends AppCompatActivity {
         myBasic = new MyBasic();
         title_list = new ArrayList<>();
         story_list = new ArrayList<>();
-        adapter = new ArrayAdapter<>(this,R.layout.basic_iteam,R.id.iteamtext,title_list); // what you want to show
+        img_list = new ArrayList<>();
+
+        adapter = new ArrayAdapter<>(this,R.layout.basic_iteam,R.id.iteamtext,title_list); // what you want to show on List. It  Shows only title
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 title_list.clear();
                 story_list.clear();
+                img_list.clear();
 
                 for (DataSnapshot ds : dataSnapshot.getChildren()){
                     myBasic = ds.getValue(MyBasic.class);
                     title_list.add(myBasic.getTi());
                     story_list.add(myBasic.getTx());
+                    img_list.add(myBasic.getUrl());
                 }
+
                 listView.setAdapter(adapter); // show title on list
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -61,7 +66,9 @@ public class Basic_Activity extends AppCompatActivity {
                         // When click on any of the textview it will redirect  to the paratiular activity
                         Intent intent = new Intent(Basic_Activity.this,Basic_Next_Activity.class);
                         String p = story_list.get(i);
+                        String urlstr = img_list.get(i);
                         intent.putExtra("key",p);
+                        intent.putExtra("url",urlstr);
                         startActivity(intent);
                     }
                 });
