@@ -46,5 +46,8 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
     implementation 'com.google.firebase:firebase-database:20.0.0'
 
+    implementation'eu.dkaratzas:android-inapp-update:1.0.5' // Update
+    implementation 'com.google.android.play:core:1.10.0' // IN app review
+
 }
 apply plugin: 'com.google.gms.google-services'
