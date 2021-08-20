@@ -57,6 +57,20 @@
                         android:textColor="@color/black"
                         android:textSize="24sp" />
 
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:text="Open Accpount"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:padding="5dp"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:background="@drawable/button_bg"
+                        android:drawablePadding="10dp"
+                        android:drawableRight="@drawable/open"
+                        android:layout_height="wrap_content"/>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -87,6 +101,19 @@
                         android:text="featurs"
                         android:textColor="@color/black"
                         android:textSize="24sp" />
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:text="Open Accpount"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:padding="5dp"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:background="@drawable/button_bg"
+                        android:drawablePadding="10dp"
+                        android:drawableRight="@drawable/open"
+                        android:layout_height="wrap_content"/>
 
                 </LinearLayout>
 
@@ -118,6 +145,20 @@
                         android:text="featurs"
                         android:textColor="@color/black"
                         android:textSize="24sp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:text="Open Accpount"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:padding="5dp"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:background="@drawable/button_bg"
+                        android:drawablePadding="10dp"
+                        android:drawableRight="@drawable/open"
+                        android:layout_height="wrap_content"/>
 
                 </LinearLayout>
 
