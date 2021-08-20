@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ShareMarketMarathi">
-        <activity android:name=".Basic_Next_Activity"></activity>
+        <activity android:name=".CandleActivity"></activity>
+        <activity android:name=".Basic_Next_Activity" />
         <activity android:name=".Basic_Activity" />
         <activity android:name=".QandN" />
         <activity android:name=".MainActivity" />

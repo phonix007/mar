@@ -38,6 +38,12 @@ public class HomeFragment extends Fragment {
                 startActivity(new Intent(getActivity(), QandN.class));
             }
         });
+        view.findViewById(R.id.candle).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), CandleActivity.class));
+            }
+        });
 
 
 
