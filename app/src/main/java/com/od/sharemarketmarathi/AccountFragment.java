@@ -28,6 +28,9 @@ public class AccountFragment extends Fragment {
         ImageView angel = (ImageView) view.findViewById(R.id.angel_logo);
         Glide.with(this).load("https://firebasestorage.googleapis.com/v0/b/stock-market-marathi.appspot.com/o/basic%2Fmoney.png?alt=media&token=587a415e-6880-437b-98a8-97e935b04c39").placeholder(R.drawable.refresh).into(angel);
 
+        ImageView zerodha = (ImageView) view.findViewById(R.id.zerodha_logo);
+        Glide.with(this).load("https://firebasestorage.googleapis.com/v0/b/stock-market-marathi.appspot.com/o/basic%2Fmoney.png?alt=media&token=587a415e-6880-437b-98a8-97e935b04c39").placeholder(R.drawable.refresh).into(zerodha);
+
 
         return view;
     }
