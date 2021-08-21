@@ -19,6 +19,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
+
         android:layout_marginRight="8dp"
         android:background="@drawable/rounded_corner"
         app:elevation="2dp"
@@ -32,7 +33,7 @@
         app:menu="@menu/item_menu"
         tools:ignore="MissingConstraints" />
 
-<!--    <me.ibrahimsn.lib.SmoothBottomBar-->
+    <!--    <me.ibrahimsn.lib.SmoothBottomBar-->
 <!--        android:id="@+id/bottomBar"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="70dp"-->

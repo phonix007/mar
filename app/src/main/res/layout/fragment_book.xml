@@ -33,7 +33,7 @@
                     android:layout_margin="10dp"
                     android:background="@drawable/basic_bg"
                     android:orientation="vertical"
-                    android:padding="5dp">
+                    android:padding="10dp">
 
                     <ImageView
                         android:id="@+id/intellegent"
@@ -45,7 +45,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Book Name "
+                        android:padding="10dp"
+                        android:text="Book Name"
                         android:textColor="@color/black"
                         android:textSize="30sp"
                         android:textStyle="bold" />
@@ -54,6 +55,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:padding="10dp"
                         android:text="featurs"
                         android:textColor="@color/black"
                         android:textSize="24sp" />
@@ -65,7 +67,7 @@
                         android:background="@drawable/button_bg"
                         android:drawableRight="@drawable/amazon"
                         android:drawablePadding="10dp"
-                        android:padding="5dp"
+                        android:padding="10dp"
                         android:text="Buy Now"
                         android:textAlignment="center"
                         android:textAllCaps="false"
@@ -78,6 +80,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
+                    android:padding="10dp"
                     android:background="@drawable/basic_bg"
                     android:orientation="vertical">
 
@@ -91,6 +94,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:padding="10dp"
                         android:text="Book Name "
                         android:textColor="@color/black"
                         android:textSize="30sp"
@@ -100,6 +104,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:padding="10dp"
                         android:text="featurs"
                         android:textColor="@color/black"
                         android:textSize="24sp" />
@@ -111,12 +116,11 @@
                         android:background="@drawable/button_bg"
                         android:drawableRight="@drawable/amazon"
                         android:drawablePadding="10dp"
-                        android:padding="5dp"
+                        android:padding="10dp"
                         android:text="Buy Now"
                         android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textSize="20sp"
-
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -125,6 +129,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
+                    android:padding="10dp"
                     android:background="@drawable/basic_bg"
 
                     android:orientation="vertical">
@@ -139,6 +144,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:padding="10dp"
                         android:text="Book Name "
                         android:textColor="@color/black"
                         android:textSize="30sp"
@@ -148,6 +154,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:padding="10dp"
                         android:text="featurs"
                         android:textColor="@color/black"
                         android:textSize="24sp" />
@@ -159,7 +166,7 @@
                         android:background="@drawable/button_bg"
                         android:drawableRight="@drawable/amazon"
                         android:drawablePadding="10dp"
-                        android:padding="5dp"
+                        android:padding="10dp"
                         android:text="Buy Now"
                         android:textAlignment="center"
                         android:textAllCaps="false"
@@ -167,6 +174,17 @@
                         android:textStyle="bold" />
 
                 </LinearLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@drawable/basic_bg"
+                    android:drawableRight="@drawable/headphones"
+                    android:drawablePadding="10dp"
+                    android:padding="10dp"
+                    android:text="Listion Books For Free"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
 
             </LinearLayout>

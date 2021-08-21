@@ -13,6 +13,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.play.core.review.ReviewInfo;
+import com.google.android.play.core.review.ReviewManager;
+import com.google.android.play.core.review.ReviewManagerFactory;
+import com.google.android.play.core.tasks.OnCompleteListener;
+import com.google.android.play.core.tasks.OnSuccessListener;
+import com.google.android.play.core.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,11 +36,18 @@ public class Basic_Activity extends AppCompatActivity {
     List<String> title_list, story_list, img_list;
     ArrayAdapter<String> adapter;
     MyBasic myBasic;
+    private long backPressedTime;
+    private Toast backToast;
+
+    ReviewManager manager;
+    ReviewInfo reviewInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic);
+
+
 
         listView = findViewById(R.id.listView);
         databaseReference = FirebaseDatabase.getInstance().getReference("basicbook"); //
@@ -81,4 +94,41 @@ public class Basic_Activity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onBackPressed() { //double press to exit
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            super.onBackPressed();
+            return;
+        } else {
+            // review
+            manager = ReviewManagerFactory.create(Basic_Activity.this);
+            Task<ReviewInfo> request = manager.requestReviewFlow();
+
+            request.addOnCompleteListener(new OnCompleteListener<ReviewInfo>() {
+                @Override
+                public void onComplete(@NonNull Task<ReviewInfo> task) {
+
+                    if (task.isSuccessful()){
+                        reviewInfo = task.getResult();
+                        Toast.makeText(Basic_Activity.this, "Please Give Us 5 ✮ Star Rating", Toast.LENGTH_SHORT).show();
+                        Task<Void> flow = manager.launchReviewFlow(Basic_Activity.this,reviewInfo);
+
+                        flow.addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void result) {
+
+                            }
+                        });
+                    }else {
+                        Toast.makeText(Basic_Activity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+            // review end
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
+
 }

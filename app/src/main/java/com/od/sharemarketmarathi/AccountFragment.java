@@ -23,13 +23,13 @@ public class AccountFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_account, container, false);
         ImageView upstox = (ImageView) view.findViewById(R.id.upstox_logo);
-        Glide.with(this).load("https://firebasestorage.googleapis.com/v0/b/stock-market-marathi.appspot.com/o/basic%2Fmoney.png?alt=media&token=587a415e-6880-437b-98a8-97e935b04c39").placeholder(R.drawable.refresh).into(upstox);
+        Glide.with(this).load("https://firebasestorage.googleapis.com/v0/b/stock-market-marathi.appspot.com/o/Account_logo%2Fupstox_logo.png?alt=media&token=91ee29dc-c02e-4240-bdf9-36bbc5257afb").placeholder(R.drawable.refresh).into(upstox);
 
         ImageView angel = (ImageView) view.findViewById(R.id.angel_logo);
-        Glide.with(this).load("https://firebasestorage.googleapis.com/v0/b/stock-market-marathi.appspot.com/o/basic%2Fmoney.png?alt=media&token=587a415e-6880-437b-98a8-97e935b04c39").placeholder(R.drawable.refresh).into(angel);
+        Glide.with(this).load("https://firebasestorage.googleapis.com/v0/b/stock-market-marathi.appspot.com/o/Account_logo%2FAngle_Logo.jpg?alt=media&token=9226bbb8-2ce5-400d-a451-fc074768548b").placeholder(R.drawable.refresh).into(angel);
 
         ImageView zerodha = (ImageView) view.findViewById(R.id.zerodha_logo);
-        Glide.with(this).load("https://firebasestorage.googleapis.com/v0/b/stock-market-marathi.appspot.com/o/basic%2Fmoney.png?alt=media&token=587a415e-6880-437b-98a8-97e935b04c39").placeholder(R.drawable.refresh).into(zerodha);
+        Glide.with(this).load("https://firebasestorage.googleapis.com/v0/b/stock-market-marathi.appspot.com/o/Account_logo%2FZerodha-Logo.jpg?alt=media&token=f933dc40-e5ed-43cb-8df8-873607080a3c").placeholder(R.drawable.refresh).into(zerodha);
 
 
         return view;
