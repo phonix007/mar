@@ -94,41 +94,5 @@ public class Basic_Activity extends AppCompatActivity {
         });
 
     }
-
-    @Override
-    public void onBackPressed() { //double press to exit
-        if (backPressedTime + 2000 > System.currentTimeMillis()) {
-            backToast.cancel();
-            super.onBackPressed();
-            return;
-        } else {
-            // review
-            manager = ReviewManagerFactory.create(Basic_Activity.this);
-            Task<ReviewInfo> request = manager.requestReviewFlow();
-
-            request.addOnCompleteListener(new OnCompleteListener<ReviewInfo>() {
-                @Override
-                public void onComplete(@NonNull Task<ReviewInfo> task) {
-
-                    if (task.isSuccessful()){
-                        reviewInfo = task.getResult();
-                        Toast.makeText(Basic_Activity.this, "Please Give Us 5 ✮ Star Rating", Toast.LENGTH_SHORT).show();
-                        Task<Void> flow = manager.launchReviewFlow(Basic_Activity.this,reviewInfo);
-
-                        flow.addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void result) {
-
-                            }
-                        });
-                    }else {
-                        Toast.makeText(Basic_Activity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-            // review end
-        }
-        backPressedTime = System.currentTimeMillis();
-    }
-
+    
 }

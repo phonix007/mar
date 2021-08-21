@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.WebView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -22,6 +23,9 @@ public class MainActivity extends AppCompatActivity implements InAppUpdateManage
     InAppUpdateManager inAppUpdateManager;
 
     BottomNavigationView navigationView;
+
+    private long backPressedTime;
+    private Toast backToast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,4 +102,18 @@ public class MainActivity extends AppCompatActivity implements InAppUpdateManage
         }
 
     }
+
+    @Override
+    public void onBackPressed() { //double press to exit
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            super.onBackPressed();
+            return;
+        } else {
+            backToast = Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
+
 }
