@@ -15,8 +15,14 @@ import com.google.android.play.core.review.ReviewManagerFactory;
 import com.google.android.play.core.tasks.OnCompleteListener;
 import com.google.android.play.core.tasks.OnSuccessListener;
 import com.google.android.play.core.tasks.Task;
+import com.mopub.common.MoPub;
+import com.mopub.common.SdkConfiguration;
+import com.mopub.common.SdkInitializationListener;
+import com.mopub.mobileads.MoPubErrorCode;
+import com.mopub.mobileads.MoPubInterstitial;
+import com.mopub.mobileads.MoPubView;
 
-public class Basic_Next_Activity extends AppCompatActivity {
+public class Basic_Next_Activity extends AppCompatActivity implements MoPubInterstitial.InterstitialAdListener {
 
     TextView txt;
     ImageView img;
@@ -24,10 +30,16 @@ public class Basic_Next_Activity extends AppCompatActivity {
     ReviewManager manager;
     ReviewInfo reviewInfo;
 
+    private MoPubView moPubView;
+    private MoPubInterstitial mInterstitial;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic_next);
+
+        SdkConfiguration.Builder sdkConfiguration = new SdkConfiguration.Builder(getString(R.string.mob_pub_banner));
+        MoPub.initializeSdk(this, sdkConfiguration.build(), initSdkListener());
 
         txt = findViewById(R.id.next_tetx);
         img = findViewById(R.id.next_image);
@@ -63,4 +75,67 @@ public class Basic_Next_Activity extends AppCompatActivity {
         });
         // review end
     }
+
+    private SdkInitializationListener initSdkListener() {
+        return new SdkInitializationListener() {
+            @Override
+            public void onInitializationFinished() {
+                bannerAd();
+                intrestitialAd();
+            }
+        };
+    }
+
+    private void bannerAd(){
+
+        moPubView = (MoPubView) findViewById(R.id.adview);
+        moPubView.setAdUnitId(getString(R.string.mob_pub_banner)); // Enter your Ad Unit ID from www.mopub.com
+        moPubView.loadAd();
+
+    }
+
+    private void intrestitialAd(){
+        mInterstitial = new MoPubInterstitial(this, getString(R.string.mob_pub_intrestitial));
+        mInterstitial.setInterstitialAdListener(this);
+        mInterstitial.load();
+    }
+
+    @Override
+    protected void onDestroy() {
+        moPubView.destroy();
+        mInterstitial.destroy();
+        super.onDestroy();
+    }
+
+    @Override
+    public void onInterstitialLoaded(MoPubInterstitial moPubInterstitial) {
+        yourAppsShowInterstitialMethod();
+    }
+
+    @Override
+    public void onInterstitialFailed(MoPubInterstitial moPubInterstitial, MoPubErrorCode moPubErrorCode) {
+
+    }
+
+    @Override
+    public void onInterstitialShown(MoPubInterstitial moPubInterstitial) {
+
+    }
+
+    @Override
+    public void onInterstitialClicked(MoPubInterstitial moPubInterstitial) {
+
+    }
+
+    @Override
+    public void onInterstitialDismissed(MoPubInterstitial moPubInterstitial) {
+
+    }
+
+    private void yourAppsShowInterstitialMethod() {
+        if (mInterstitial.isReady()) {
+            mInterstitial.show();
+        }
+    }
+
 }

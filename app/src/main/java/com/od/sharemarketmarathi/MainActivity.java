@@ -14,12 +14,18 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.mopub.common.MoPub;
+import com.mopub.common.SdkConfiguration;
+import com.mopub.common.SdkInitializationListener;
+import com.mopub.mobileads.MoPubErrorCode;
+import com.mopub.mobileads.MoPubInterstitial;
+import com.mopub.mobileads.MoPubView;
 
 import eu.dkaratzas.android.inapp.update.Constants;
 import eu.dkaratzas.android.inapp.update.InAppUpdateManager;
 import eu.dkaratzas.android.inapp.update.InAppUpdateStatus;
 
-public class MainActivity extends AppCompatActivity implements InAppUpdateManager.InAppUpdateHandler {
+public class MainActivity extends AppCompatActivity implements InAppUpdateManager.InAppUpdateHandler, MoPubInterstitial.InterstitialAdListener {
     InAppUpdateManager inAppUpdateManager;
 
     BottomNavigationView navigationView;
@@ -27,11 +33,16 @@ public class MainActivity extends AppCompatActivity implements InAppUpdateManage
     private long backPressedTime;
     private Toast backToast;
 
+    private MoPubView moPubView;
+    private MoPubInterstitial mInterstitial;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN); // hides status bar
+        SdkConfiguration.Builder sdkConfiguration = new SdkConfiguration.Builder(getString(R.string.mob_pub_banner));
+        MoPub.initializeSdk(this, sdkConfiguration.build(), initSdkListener());
 
         //update ke liye coding
         inAppUpdateManager = InAppUpdateManager.Builder(this, 101)
@@ -76,6 +87,37 @@ public class MainActivity extends AppCompatActivity implements InAppUpdateManage
         });
     }
 
+    private SdkInitializationListener initSdkListener() {
+        return new SdkInitializationListener() {
+            @Override
+            public void onInitializationFinished() {
+                  bannerAd();
+                  intrestitialAd();
+            }
+        };
+    }
+
+    private void bannerAd(){
+
+        moPubView = (MoPubView) findViewById(R.id.adview);
+        moPubView.setAdUnitId(getString(R.string.mob_pub_banner)); // Enter your Ad Unit ID from www.mopub.com
+        moPubView.loadAd();
+
+    }
+
+    private void intrestitialAd(){
+        mInterstitial = new MoPubInterstitial(this, getString(R.string.mob_pub_intrestitial));
+        mInterstitial.setInterstitialAdListener(this);
+        mInterstitial.load();
+    }
+
+    @Override
+    protected void onDestroy() {
+        moPubView.destroy();
+        mInterstitial.destroy();
+        super.onDestroy();
+    }
+
     @Override
     public void onInAppUpdateError(int code, Throwable error) {
 
@@ -114,6 +156,37 @@ public class MainActivity extends AppCompatActivity implements InAppUpdateManage
             backToast.show();
         }
         backPressedTime = System.currentTimeMillis();
+    }
+
+    @Override
+    public void onInterstitialLoaded(MoPubInterstitial moPubInterstitial) {
+        yourAppsShowInterstitialMethod();
+    }
+
+    @Override
+    public void onInterstitialFailed(MoPubInterstitial moPubInterstitial, MoPubErrorCode moPubErrorCode) {
+
+    }
+
+    @Override
+    public void onInterstitialShown(MoPubInterstitial moPubInterstitial) {
+
+    }
+
+    @Override
+    public void onInterstitialClicked(MoPubInterstitial moPubInterstitial) {
+
+    }
+
+    @Override
+    public void onInterstitialDismissed(MoPubInterstitial moPubInterstitial) {
+
+    }
+
+    private void yourAppsShowInterstitialMethod() {
+        if (mInterstitial.isReady()) {
+            mInterstitial.show();
+        }
     }
 
 }

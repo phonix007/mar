@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="5dp"
-    tools:context=".Basic_Next_Activity">
+    tools:context=".Basic_Next_Activity"
+    android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -22,8 +23,9 @@
             android:padding="8dp"
             android:layout_margin="8dp"
             android:layout_weight="2"
+            android:layout_gravity="center"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="200dp"/>
 
         <TextView
             android:id="@+id/next_tetx"
@@ -35,5 +37,14 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <com.mopub.mobileads.MoPubView
+        android:id="@+id/adview"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        app:moPubAdSize="match_view">
+    </com.mopub.mobileads.MoPubView>
 
 </LinearLayout>
