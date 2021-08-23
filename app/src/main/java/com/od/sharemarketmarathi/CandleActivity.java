@@ -1,10 +1,13 @@
 package com.od.sharemarketmarathi;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -35,6 +38,9 @@ public class CandleActivity extends AppCompatActivity implements MoPubInterstiti
     private MoPubView moPubView;
     private MoPubInterstitial mInterstitial;
 
+    private Dialog loadingDialog;
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,9 +49,17 @@ public class CandleActivity extends AppCompatActivity implements MoPubInterstiti
         SdkConfiguration.Builder sdkConfiguration = new SdkConfiguration.Builder(getString(R.string.mob_pub_banner));
         MoPub.initializeSdk(this, sdkConfiguration.build(), initSdkListener());
 
+        loadingDialog = new Dialog(this);
+        loadingDialog.setContentView(R.layout.loading);
+        loadingDialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.rounded_corner));
+        loadingDialog.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+        loadingDialog.setCancelable(false);
+
         recyclerView = findViewById(R.id.recyclerViewc_candle);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
+
+        loadingDialog.show();
 
         recyclerView.setLayoutManager(layoutManager);
 
@@ -60,10 +74,12 @@ public class CandleActivity extends AppCompatActivity implements MoPubInterstiti
                     list.add(dataSnapshot1.getValue(Candle_Model.class)); // passing class
                 }
                 candle_adapter.notifyDataSetChanged();
+                loadingDialog.dismiss();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+                loadingDialog.dismiss();
                 Toast.makeText(CandleActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

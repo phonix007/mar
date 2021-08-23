@@ -1,10 +1,14 @@
 package com.od.sharemarketmarathi;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +26,7 @@ import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubInterstitial;
 import com.mopub.mobileads.MoPubView;
 
-public class Basic_Next_Activity extends AppCompatActivity implements MoPubInterstitial.InterstitialAdListener {
+public class Basic_Next_Activity extends AppCompatActivity  {
 
     TextView txt;
     ImageView img;
@@ -31,8 +35,10 @@ public class Basic_Next_Activity extends AppCompatActivity implements MoPubInter
     ReviewInfo reviewInfo;
 
     private MoPubView moPubView;
-    private MoPubInterstitial mInterstitial;
 
+    private Dialog loadingDialog;
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +46,13 @@ public class Basic_Next_Activity extends AppCompatActivity implements MoPubInter
 
         SdkConfiguration.Builder sdkConfiguration = new SdkConfiguration.Builder(getString(R.string.mob_pub_banner));
         MoPub.initializeSdk(this, sdkConfiguration.build(), initSdkListener());
+
+        loadingDialog = new Dialog(this);
+        loadingDialog.setContentView(R.layout.loading);
+        loadingDialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.rounded_corner));
+        loadingDialog.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+        loadingDialog.setCancelable(false);
+        loadingDialog.show();
 
         txt = findViewById(R.id.next_tetx);
         img = findViewById(R.id.next_image);
@@ -50,6 +63,7 @@ public class Basic_Next_Activity extends AppCompatActivity implements MoPubInter
                 .load(url)
                 .into(img);
 
+        loadingDialog.dismiss();
         // review
         manager = ReviewManagerFactory.create(Basic_Next_Activity.this);
         Task<ReviewInfo> request = manager.requestReviewFlow();
@@ -81,7 +95,6 @@ public class Basic_Next_Activity extends AppCompatActivity implements MoPubInter
             @Override
             public void onInitializationFinished() {
                 bannerAd();
-                intrestitialAd();
             }
         };
     }
@@ -94,48 +107,11 @@ public class Basic_Next_Activity extends AppCompatActivity implements MoPubInter
 
     }
 
-    private void intrestitialAd(){
-        mInterstitial = new MoPubInterstitial(this, getString(R.string.mob_pub_intrestitial));
-        mInterstitial.setInterstitialAdListener(this);
-        mInterstitial.load();
-    }
-
     @Override
     protected void onDestroy() {
         moPubView.destroy();
-        mInterstitial.destroy();
+
         super.onDestroy();
-    }
-
-    @Override
-    public void onInterstitialLoaded(MoPubInterstitial moPubInterstitial) {
-        yourAppsShowInterstitialMethod();
-    }
-
-    @Override
-    public void onInterstitialFailed(MoPubInterstitial moPubInterstitial, MoPubErrorCode moPubErrorCode) {
-
-    }
-
-    @Override
-    public void onInterstitialShown(MoPubInterstitial moPubInterstitial) {
-
-    }
-
-    @Override
-    public void onInterstitialClicked(MoPubInterstitial moPubInterstitial) {
-
-    }
-
-    @Override
-    public void onInterstitialDismissed(MoPubInterstitial moPubInterstitial) {
-
-    }
-
-    private void yourAppsShowInterstitialMethod() {
-        if (mInterstitial.isReady()) {
-            mInterstitial.show();
-        }
     }
 
 }

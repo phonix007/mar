@@ -1,15 +1,19 @@
 package com.od.sharemarketmarathi;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -51,7 +55,9 @@ public class Basic_Activity extends AppCompatActivity implements MoPubInterstiti
     private MoPubView moPubView;
     private MoPubInterstitial mInterstitial;
 
+    private Dialog loadingDialog;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +65,12 @@ public class Basic_Activity extends AppCompatActivity implements MoPubInterstiti
 
         SdkConfiguration.Builder sdkConfiguration = new SdkConfiguration.Builder(getString(R.string.mob_pub_banner));
         MoPub.initializeSdk(this, sdkConfiguration.build(), initSdkListener());
+
+        loadingDialog = new Dialog(this);
+        loadingDialog.setContentView(R.layout.loading);
+        loadingDialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.rounded_corner));
+        loadingDialog.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+        loadingDialog.setCancelable(false);
 
         listView = findViewById(R.id.listView);
         databaseReference = FirebaseDatabase.getInstance().getReference("basicbook"); //
@@ -68,6 +80,8 @@ public class Basic_Activity extends AppCompatActivity implements MoPubInterstiti
         img_list = new ArrayList<>();
 
         adapter = new ArrayAdapter<>(this,R.layout.basic_iteam,R.id.iteamtext,title_list); // what you want to show on List. It  Shows only title
+
+        loadingDialog.show();
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -84,6 +98,7 @@ public class Basic_Activity extends AppCompatActivity implements MoPubInterstiti
                 }
 
                 listView.setAdapter(adapter); // show title on list
+                loadingDialog.dismiss();
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

@@ -1,14 +1,18 @@
 package com.od.sharemarketmarathi;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.EventLog;
 import android.util.Log;
+import android.widget.LinearLayout;
 
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
@@ -30,11 +34,12 @@ public class QandN extends AppCompatActivity implements MoPubInterstitial.Inters
     ArrayList<questionModel> questionModelArrayList;
     qusAdapter qusAdapter;
     FirebaseFirestore db;
-    ProgressDialog progressDialog;
+    private Dialog loadingDialog;
 
     private MoPubView moPubView;
     private MoPubInterstitial mInterstitial;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,10 +49,11 @@ public class QandN extends AppCompatActivity implements MoPubInterstitial.Inters
         MoPub.initializeSdk(this, sdkConfiguration.build(), initSdkListener());
 
 
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setCancelable(false);
-        progressDialog.setMessage("loading...");
-        progressDialog.show();
+        loadingDialog = new Dialog(this);
+        loadingDialog.setContentView(R.layout.loading);
+        loadingDialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.rounded_corner));
+        loadingDialog.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+        loadingDialog.setCancelable(false);
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -56,6 +62,8 @@ public class QandN extends AppCompatActivity implements MoPubInterstitial.Inters
         db = FirebaseFirestore.getInstance();
         questionModelArrayList = new ArrayList<questionModel>();
         qusAdapter = new qusAdapter(QandN.this,questionModelArrayList);
+
+        loadingDialog.show();
 
         recyclerView.setAdapter(qusAdapter);
 
@@ -103,8 +111,8 @@ public class QandN extends AppCompatActivity implements MoPubInterstitial.Inters
 
                         if (error != null){
 
-                            if (progressDialog.isShowing())
-                                progressDialog.dismiss();
+                            if (loadingDialog.isShowing())
+                                loadingDialog.dismiss();
                             Log.e("FireStore Error",error.getMessage());
                             return;
                         }
@@ -116,8 +124,8 @@ public class QandN extends AppCompatActivity implements MoPubInterstitial.Inters
                                 questionModelArrayList.add(dc.getDocument().toObject(questionModel.class)); //
                             }
                             qusAdapter.notifyDataSetChanged(); //
-                            if (progressDialog.isShowing())
-                                progressDialog.dismiss();
+                            if (loadingDialog.isShowing())
+                                loadingDialog.dismiss();
                         }
                     }
                 });

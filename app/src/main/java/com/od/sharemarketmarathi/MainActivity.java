@@ -25,7 +25,7 @@ import eu.dkaratzas.android.inapp.update.Constants;
 import eu.dkaratzas.android.inapp.update.InAppUpdateManager;
 import eu.dkaratzas.android.inapp.update.InAppUpdateStatus;
 
-public class MainActivity extends AppCompatActivity implements InAppUpdateManager.InAppUpdateHandler, MoPubInterstitial.InterstitialAdListener {
+public class MainActivity extends AppCompatActivity implements InAppUpdateManager.InAppUpdateHandler {
     InAppUpdateManager inAppUpdateManager;
 
     BottomNavigationView navigationView;
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements InAppUpdateManage
     private Toast backToast;
 
     private MoPubView moPubView;
-    private MoPubInterstitial mInterstitial;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements InAppUpdateManage
             @Override
             public void onInitializationFinished() {
                   bannerAd();
-                  intrestitialAd();
+
             }
         };
     }
@@ -105,16 +105,11 @@ public class MainActivity extends AppCompatActivity implements InAppUpdateManage
 
     }
 
-    private void intrestitialAd(){
-        mInterstitial = new MoPubInterstitial(this, getString(R.string.mob_pub_intrestitial));
-        mInterstitial.setInterstitialAdListener(this);
-        mInterstitial.load();
-    }
 
     @Override
     protected void onDestroy() {
         moPubView.destroy();
-        mInterstitial.destroy();
+
         super.onDestroy();
     }
 
@@ -156,37 +151,6 @@ public class MainActivity extends AppCompatActivity implements InAppUpdateManage
             backToast.show();
         }
         backPressedTime = System.currentTimeMillis();
-    }
-
-    @Override
-    public void onInterstitialLoaded(MoPubInterstitial moPubInterstitial) {
-        yourAppsShowInterstitialMethod();
-    }
-
-    @Override
-    public void onInterstitialFailed(MoPubInterstitial moPubInterstitial, MoPubErrorCode moPubErrorCode) {
-
-    }
-
-    @Override
-    public void onInterstitialShown(MoPubInterstitial moPubInterstitial) {
-
-    }
-
-    @Override
-    public void onInterstitialClicked(MoPubInterstitial moPubInterstitial) {
-
-    }
-
-    @Override
-    public void onInterstitialDismissed(MoPubInterstitial moPubInterstitial) {
-
-    }
-
-    private void yourAppsShowInterstitialMethod() {
-        if (mInterstitial.isReady()) {
-            mInterstitial.show();
-        }
     }
 
 }
