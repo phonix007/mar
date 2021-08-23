@@ -18,14 +18,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mopub.common.MoPub;
+import com.mopub.common.MoPubReward;
 import com.mopub.common.SdkConfiguration;
 import com.mopub.common.SdkInitializationListener;
 import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubInterstitial;
+import com.mopub.mobileads.MoPubRewardedAdListener;
+import com.mopub.mobileads.MoPubRewardedAds;
 import com.mopub.mobileads.MoPubView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class CandleActivity extends AppCompatActivity implements MoPubInterstitial.InterstitialAdListener {
 
@@ -37,6 +41,9 @@ public class CandleActivity extends AppCompatActivity implements MoPubInterstiti
 
     private MoPubView moPubView;
     private MoPubInterstitial mInterstitial;
+    private MoPubReward moPubReward;
+    private MoPubRewardedAdListener rewardedAdListener;
+
 
     private Dialog loadingDialog;
 
@@ -45,9 +52,55 @@ public class CandleActivity extends AppCompatActivity implements MoPubInterstiti
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_candle);
+        Toast.makeText(this, "You Need To Watch Video Ad to Continue", Toast.LENGTH_SHORT).show();
+
+        MoPub.onCreate(this);
+        rewardedAdListener = new MoPubRewardedAdListener() {
+            @Override
+            public void onRewardedAdLoadSuccess(String s) {
+                MoPubRewardedAds.showRewardedAd(getString(R.string.moboub_reward));
+            }
+
+            @Override
+            public void onRewardedAdLoadFailure(String s, MoPubErrorCode moPubErrorCode) {
+                Toast.makeText(CandleActivity.this, "No Video Ads Found", Toast.LENGTH_SHORT).show();
+                MoPubRewardedAds.loadRewardedAd("920b6145fb1546cf8b5cf2ac34638bb7");
+            }
+
+            @Override
+            public void onRewardedAdStarted(String s) {
+
+            }
+
+            @Override
+            public void onRewardedAdShowError(String s, MoPubErrorCode moPubErrorCode) {
+                Toast.makeText(CandleActivity.this, moPubErrorCode.getIntCode() , Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onRewardedAdClicked(String s) {
+
+            }
+
+            @Override
+            public void onRewardedAdClosed(String s) {
+                yourAppsShowInterstitialMethod();
+            }
+
+            @Override
+            public void onRewardedAdCompleted(Set<String> set, MoPubReward moPubReward) {
+
+                
+
+            }
+        };
+
+        MoPubRewardedAds.setRewardedAdListener(rewardedAdListener);
 
         SdkConfiguration.Builder sdkConfiguration = new SdkConfiguration.Builder(getString(R.string.mob_pub_banner));
         MoPub.initializeSdk(this, sdkConfiguration.build(), initSdkListener());
+        MoPubRewardedAds.loadRewardedAd("920b6145fb1546cf8b5cf2ac34638bb7");
 
         loadingDialog = new Dialog(this);
         loadingDialog.setContentView(R.layout.loading);
@@ -91,6 +144,7 @@ public class CandleActivity extends AppCompatActivity implements MoPubInterstiti
             public void onInitializationFinished() {
                 bannerAd();
                 intrestitialAd();
+                rewardedAd();
             }
         };
     }
@@ -109,6 +163,11 @@ public class CandleActivity extends AppCompatActivity implements MoPubInterstiti
         mInterstitial.load();
     }
 
+    private void rewardedAd(){
+
+        MoPubRewardedAds.loadRewardedAd(getString(R.string.moboub_reward));
+    }
+
     @Override
     protected void onDestroy() {
         moPubView.destroy();
@@ -118,7 +177,7 @@ public class CandleActivity extends AppCompatActivity implements MoPubInterstiti
 
     @Override
     public void onInterstitialLoaded(MoPubInterstitial moPubInterstitial) {
-        yourAppsShowInterstitialMethod();
+
     }
 
     @Override
