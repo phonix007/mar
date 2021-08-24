@@ -21,13 +21,7 @@
             android:layout_gravity="center_vertical"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Question :"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+
 
             <TextView
                 android:id="@+id/tvquestion"
@@ -35,9 +29,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:text="Question Is Loading"
+                android:textStyle="bold"
+                android:text="Question Is Loading..."
+                android:fontFamily="sans-serif-condensed"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="26dp"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintLeft_toLeftOf="parent" />
@@ -50,16 +46,6 @@
             android:layout_gravity="center_vertical"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Answer:"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constrainedWidth="true"
-                app:layout_constraintHorizontal_bias="1"
-                app:layout_constraintLeft_toLeftOf="parent" />
 
             <TextView
                 android:id="@+id/tvanswer"
@@ -67,9 +53,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:text="Answer Is Loading"
+                android:text="Answer Is Loading..."
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="22sp"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintLeft_toLeftOf="parent" />

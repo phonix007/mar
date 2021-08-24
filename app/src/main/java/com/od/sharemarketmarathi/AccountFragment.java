@@ -40,7 +40,7 @@ public class AccountFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("telegram/com"))); // Add privacy policy url
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://bit.ly/3AZXD6f"))); // Add privacy policy url
                 }catch (Exception e){
                     Toast.makeText(getContext(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
                 }
@@ -51,7 +51,7 @@ public class AccountFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("telegram/com"))); // Add privacy policy url
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://bit.ly/383xFT3"))); // Add privacy policy url
                 }catch (Exception e){
                     Toast.makeText(getContext(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
                 }
@@ -64,7 +64,7 @@ public class AccountFragment extends Fragment {
                 try {
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("telegram/com"))); // Add privacy policy url
                 }catch (Exception e){
-                    Toast.makeText(getContext(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "https://zerodha.com/open-account/", Toast.LENGTH_SHORT).show();
                 }
             }
         });

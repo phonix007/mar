@@ -37,7 +37,7 @@
                     android:padding="10dp">
 
                     <ImageView
-                        android:id="@+id/intellegent"
+                        android:id="@+id/gauid_mrk"
                         android:layout_width="200dp"
                         android:layout_height="200dp"
                         android:layout_gravity="center" />
@@ -86,7 +86,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/intellegent_two"
+                        android:id="@+id/wallstreet"
                         android:layout_width="200dp"
                         android:layout_height="200dp"
                         android:layout_gravity="center" />
@@ -136,7 +136,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/intellegent_three"
+                        android:id="@+id/cr"
                         android:layout_width="200dp"
                         android:layout_height="200dp"
                         android:layout_gravity="center" />
@@ -179,7 +179,168 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/button_bg"
+                    android:drawableRight="@drawable/headphones"
+                    android:drawablePadding="10dp"
+                    android:padding="10dp"
+                    android:text="Listion Books For Free"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:padding="10dp"
                     android:background="@drawable/basic_bg"
+
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/stock_rich"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="10dp"
+                        android:text="Book Name "
+                        android:textColor="@color/black"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="10dp"
+                        android:text="featurs"
+                        android:textColor="@color/black"
+                        android:textSize="24sp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/button_bg"
+                        android:drawableRight="@drawable/amazon"
+                        android:drawablePadding="10dp"
+                        android:padding="10dp"
+                        android:text="Buy Now"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:padding="10dp"
+                    android:background="@drawable/basic_bg"
+
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/itelle"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="10dp"
+                        android:text="Book Name "
+                        android:textColor="@color/black"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="10dp"
+                        android:text="featurs"
+                        android:textColor="@color/black"
+                        android:textSize="24sp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/button_bg"
+                        android:drawableRight="@drawable/amazon"
+                        android:drawablePadding="10dp"
+                        android:padding="10dp"
+                        android:text="Buy Now"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:padding="10dp"
+                    android:background="@drawable/basic_bg"
+
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/buff"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="10dp"
+                        android:text="Book Name "
+                        android:textColor="@color/black"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="10dp"
+                        android:text="featurs"
+                        android:textColor="@color/black"
+                        android:textSize="24sp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/button_bg"
+                        android:drawableRight="@drawable/amazon"
+                        android:drawablePadding="10dp"
+                        android:padding="10dp"
+                        android:text="Buy Now"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_bg"
                     android:drawableRight="@drawable/headphones"
                     android:drawablePadding="10dp"
                     android:padding="10dp"
