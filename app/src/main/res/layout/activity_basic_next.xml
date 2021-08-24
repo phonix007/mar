@@ -38,9 +38,24 @@
 
     </ScrollView>
 
+    <Button
+        android:id="@+id/open_dmat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_bg"
+        android:drawableRight="@drawable/open"
+        android:drawablePadding="10dp"
+        android:padding="10dp"
+        android:text="Open Dmat Account"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <com.mopub.mobileads.MoPubView
             android:id="@+id/adview"
             android:layout_width="match_parent"

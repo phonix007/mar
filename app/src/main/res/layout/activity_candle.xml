@@ -13,6 +13,17 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:padding="5dp"
+        android:text="Download Trading App for More"
+        android:gravity="center"/>
+
     <com.mopub.mobileads.MoPubView
     android:id="@+id/adview"
     android:layout_width="match_parent"
