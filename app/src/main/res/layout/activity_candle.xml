@@ -21,7 +21,7 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:padding="5dp"
-        android:text="Download Trading App for More"
+        android:text="Download Trading App for More..."
         android:gravity="center"/>
 
     <com.mopub.mobileads.MoPubView

@@ -75,7 +75,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("telegram/com"))); // Add privacy policy url
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/joinchat/V3H9kU_aQwoOs-96"))); // Add privacy policy url
                 }catch (Exception e){
                     Toast.makeText(getContext(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
                 }

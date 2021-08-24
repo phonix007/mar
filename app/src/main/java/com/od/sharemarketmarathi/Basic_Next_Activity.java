@@ -33,7 +33,7 @@ public class Basic_Next_Activity extends AppCompatActivity  {
 
     TextView txt;
     ImageView img;
-    Button dmat;
+
 
     ReviewManager manager;
     ReviewInfo reviewInfo;
@@ -47,8 +47,6 @@ public class Basic_Next_Activity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic_next);
-
-        dmat = findViewById(R.id.open_dmat);
 
         SdkConfiguration.Builder sdkConfiguration = new SdkConfiguration.Builder(getString(R.string.mob_pub_banner));
         MoPub.initializeSdk(this, sdkConfiguration.build(), initSdkListener());
@@ -71,12 +69,6 @@ public class Basic_Next_Activity extends AppCompatActivity  {
 
         loadingDialog.dismiss();
 
-        dmat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
         // review
         manager = ReviewManagerFactory.create(Basic_Next_Activity.this);
         Task<ReviewInfo> request = manager.requestReviewFlow();

@@ -8,21 +8,27 @@
     tools:context=".Basic_Next_Activity"
     android:orientation="vertical">
 
+    <com.mopub.mobileads.MoPubView
+        android:id="@+id/adview"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:moPubAdSize="match_view">
+
+    </com.mopub.mobileads.MoPubView>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:weightSum="5"
+            android:layout_width="match_parent"
             android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/next_image"
             android:padding="8dp"
             android:layout_margin="8dp"
-            android:layout_weight="2"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="200dp"/>
@@ -30,40 +36,13 @@
         <TextView
             android:id="@+id/next_tetx"
             android:textSize="24sp"
-            android:layout_weight="3"
-            android:layout_width="wrap_content"
+            android:padding="10dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
     </ScrollView>
 
-    <Button
-        android:id="@+id/open_dmat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_bg"
-        android:drawableRight="@drawable/open"
-        android:drawablePadding="10dp"
-        android:padding="10dp"
-        android:text="Open Dmat Account"
-        android:textAllCaps="false"
-        android:layout_gravity="center"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.mopub.mobileads.MoPubView
-            android:id="@+id/adview"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="6dp"
-            app:moPubAdSize="match_view">
-        </com.mopub.mobileads.MoPubView>
-    </RelativeLayout>
 
 </LinearLayout>
