@@ -64,7 +64,7 @@ public class HomeFragment extends Fragment {
                             "\n" +
                             "हे, मित्रांनो मला MS-CIT चा प्रॅक्टिस साठी एक ॲप सापडलेल आहे तुम्ही पण ते ॲप डाऊनलोड करा. \n https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID+"\n\n"; // Change your message
                     intent.putExtra(Intent.EXTRA_TEXT,msg);
-                    startActivity(Intent.createChooser(intent,"share via"));
+                    startActivity(Intent.createChooser(intent,"Share App with your friends"));
                 }catch (Exception e){
                     Toast.makeText(getContext(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
                 }
