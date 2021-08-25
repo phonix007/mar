@@ -179,6 +179,16 @@
 
                 </LinearLayout>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="@string/opennow_last"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:background="@drawable/basic_bg"
+                    android:layout_height="wrap_content"/>
+
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="100dp"/>
