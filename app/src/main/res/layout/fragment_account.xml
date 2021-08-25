@@ -57,7 +57,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:padding="10dp"
-                        android:text="featurs"
+                        android:text="@string/upstox_fe"
                         android:textColor="@color/black"
                         android:textSize="24sp" />
 

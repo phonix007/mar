@@ -53,6 +53,7 @@
                     android:background="@drawable/button_bg"
                     android:color="@android:color/transparent"
                     android:text="Basics"
+                    android:textSize="16sp"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
@@ -65,6 +66,7 @@
                     android:background="@drawable/button_bg"
                     android:color="@android:color/transparent"
                     android:text="Questions And Answers"
+                    android:textSize="16sp"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
@@ -77,6 +79,7 @@
                     android:background="@drawable/button_bg"
                     android:color="@android:color/transparent"
                     android:text="Candlestick basics"
+                    android:textSize="16sp"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
@@ -88,6 +91,7 @@
                     android:layout_margin="8dp"
                     android:background="@drawable/button_bg"
                     android:color="@android:color/transparent"
+                    android:textSize="16sp"
                     android:text="Learn Trading"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
@@ -111,6 +115,7 @@
                         android:drawableLeft="@drawable/share_btn"
                         android:drawablePadding="10dp"
                         android:drawableTint="@color/black"
+                        android:textSize="16sp"
                         android:text="Share App"
                         android:textAllCaps="false"
                         android:textColor="@color/black"
@@ -127,6 +132,7 @@
                         android:drawableLeft="@drawable/ic_telegram_black_24dp"
                         android:drawablePadding="10dp"
                         android:drawableTint="@color/black"
+                        android:textSize="16sp"
                         android:text="Join Telegram Channel"
                         android:textAllCaps="false"
                         android:textColor="@color/black"

@@ -5,4 +5,14 @@
     <string name="mob_pub_banner">b195f8dd8ded45fe847ad89ed1d016da</string>
     <string name="mob_pub_intrestitial">24534e1901884e398f1253216226017e</string>
     <string name="moboub_reward">920b6145fb1546cf8b5cf2ac34638bb7</string>
+    <string name="upstox_fe"> </string>
+    <string name="angel_fe"> </string>
+    <string name="zerodha_fe"> </string>
+
+    <string name="book1"> </string>
+    <string name="book2"> </string>
+    <string name="book3"> </string>
+    <string name="book4"> </string>
+    <string name="book5"> </string>
+    <string name="book6"> </string>
 </resources>
