@@ -4,6 +4,11 @@
     android:layout_height="wrap_content"
     android:padding="16dp"
     android:layout_margin="4dp"
+    android:paddingVertical="8dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginTop="8dp"
     android:background="@drawable/basic_bg"
     android:orientation="horizontal">
 

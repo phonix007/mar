@@ -57,7 +57,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:padding="10dp"
-                        android:text="featurs"
+                        android:text="@string/book1"
                         android:textColor="@color/black"
                         android:textSize="24sp" />
 
@@ -106,7 +106,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:padding="10dp"
-                        android:text="featurs"
+                        android:text="@string/book2"
                         android:textColor="@color/black"
                         android:textSize="24sp" />
 
@@ -156,7 +156,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:padding="10dp"
-                        android:text="featurs"
+                        android:text="@string/book3"
                         android:textColor="@color/black"
                         android:textSize="24sp" />
 
@@ -217,7 +217,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:padding="10dp"
-                        android:text="featurs"
+                        android:text="@string/book4"
                         android:textColor="@color/black"
                         android:textSize="24sp" />
 
@@ -267,7 +267,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:padding="10dp"
-                        android:text="featurs"
+                        android:text="@string/book5"
                         android:textColor="@color/black"
                         android:textSize="24sp" />
 
@@ -317,7 +317,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:padding="10dp"
-                        android:text="featurs"
+                        android:text="@string/book6"
                         android:textColor="@color/black"
                         android:textSize="24sp" />
 
