@@ -63,7 +63,7 @@ public class CandleActivity extends AppCompatActivity implements MoPubInterstiti
 
             @Override
             public void onRewardedAdLoadFailure(String s, MoPubErrorCode moPubErrorCode) {
-                Toast.makeText(CandleActivity.this, "No Video Ads Found", Toast.LENGTH_SHORT).show();
+
                 MoPubRewardedAds.loadRewardedAd("920b6145fb1546cf8b5cf2ac34638bb7");
             }
 
