@@ -52,7 +52,7 @@ public class CandleActivity extends AppCompatActivity implements MoPubInterstiti
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_candle);
-        Toast.makeText(this, "You Need To Watch Video Ad to Continue", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "कॅन्डल स्टिक बद्दल वाचण्याआधी तुम्हालाही व्हिडिओ ॲड पाहावे लागेल", Toast.LENGTH_LONG).show();
 
         MoPub.onCreate(this);
         rewardedAdListener = new MoPubRewardedAdListener() {
@@ -64,7 +64,7 @@ public class CandleActivity extends AppCompatActivity implements MoPubInterstiti
             @Override
             public void onRewardedAdLoadFailure(String s, MoPubErrorCode moPubErrorCode) {
 
-                MoPubRewardedAds.loadRewardedAd("920b6145fb1546cf8b5cf2ac34638bb7");
+                MoPubRewardedAds.loadRewardedAd(getString(R.string.moboub_reward));
             }
 
             @Override
@@ -74,7 +74,7 @@ public class CandleActivity extends AppCompatActivity implements MoPubInterstiti
 
             @Override
             public void onRewardedAdShowError(String s, MoPubErrorCode moPubErrorCode) {
-                Toast.makeText(CandleActivity.this, moPubErrorCode.getIntCode() , Toast.LENGTH_SHORT).show();
+                Toast.makeText(CandleActivity.this, moPubErrorCode.getIntCode(), Toast.LENGTH_SHORT).show();
 
             }
 
@@ -91,7 +91,6 @@ public class CandleActivity extends AppCompatActivity implements MoPubInterstiti
             @Override
             public void onRewardedAdCompleted(Set<String> set, MoPubReward moPubReward) {
 
-                
 
             }
         };
@@ -100,12 +99,12 @@ public class CandleActivity extends AppCompatActivity implements MoPubInterstiti
 
         SdkConfiguration.Builder sdkConfiguration = new SdkConfiguration.Builder(getString(R.string.mob_pub_banner));
         MoPub.initializeSdk(this, sdkConfiguration.build(), initSdkListener());
-        MoPubRewardedAds.loadRewardedAd("920b6145fb1546cf8b5cf2ac34638bb7");
+        MoPubRewardedAds.loadRewardedAd(getString(R.string.moboub_reward));
 
         loadingDialog = new Dialog(this);
         loadingDialog.setContentView(R.layout.loading);
         loadingDialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.rounded_corner));
-        loadingDialog.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+        loadingDialog.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         loadingDialog.setCancelable(false);
 
         recyclerView = findViewById(R.id.recyclerViewc_candle);
@@ -123,7 +122,7 @@ public class CandleActivity extends AppCompatActivity implements MoPubInterstiti
         myRef.child("candles").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     list.add(dataSnapshot1.getValue(Candle_Model.class)); // passing class
                 }
                 candle_adapter.notifyDataSetChanged();
@@ -149,7 +148,7 @@ public class CandleActivity extends AppCompatActivity implements MoPubInterstiti
         };
     }
 
-    private void bannerAd(){
+    private void bannerAd() {
 
         moPubView = (MoPubView) findViewById(R.id.adview);
         moPubView.setAdUnitId(getString(R.string.mob_pub_banner)); // Enter your Ad Unit ID from www.mopub.com
@@ -157,13 +156,13 @@ public class CandleActivity extends AppCompatActivity implements MoPubInterstiti
 
     }
 
-    private void intrestitialAd(){
+    private void intrestitialAd() {
         mInterstitial = new MoPubInterstitial(this, getString(R.string.mob_pub_intrestitial));
         mInterstitial.setInterstitialAdListener(this);
         mInterstitial.load();
     }
 
-    private void rewardedAd(){
+    private void rewardedAd() {
 
         MoPubRewardedAds.loadRewardedAd(getString(R.string.moboub_reward));
     }

@@ -49,7 +49,11 @@ public class HomeFragment extends Fragment {
         view.findViewById(R.id.trading).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.tradingmarathi.learn"))); // Add
+                }catch (Exception e){
+                    Toast.makeText(getContext(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         view.findViewById(R.id.share).setOnClickListener(new View.OnClickListener() {
@@ -60,9 +64,9 @@ public class HomeFragment extends Fragment {
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("text/plain");
                     intent.putExtra(Intent.EXTRA_SUBJECT, " " + getString(R.string.app_name));
-                    String msg = "Hey, install this application for practice of Computer Related IMP MCQ types questions, which was asked in  MH-CIT Exam. \n" +
+                    String msg = "स्टॉक मार्केट, ट्रेडिंग अॅप हे मराठी लोकांमध्ये शेअर मार्केट, ट्रेडिंग आणि क्रिप्टोकरन्सी ज्ञान प्रदान करण्यासाठी आहे, जिथे तुम्ही स्टॉक मार्केट,ट्रेडिंग मराठी भाषेत शिकू शकता. हे अॅप तुम्हाला शेअर बाजारातील मूलभूत गोष्टी, प्रकारांसह कॅण्डल्स आणि मराठीत क्रिप्टोकरन्सी बद्दल माहिती पुरवते. \n" +
                             "\n" +
-                            "हे, मित्रांनो मला MS-CIT चा प्रॅक्टिस साठी एक ॲप सापडलेल आहे तुम्ही पण ते ॲप डाऊनलोड करा. \n https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID+"\n\n"; // Change your message
+                            "शेअर मार्केट, ट्रेडिंग आणि क्रिप्टो करेंसी बद्दल माहिती मिळवण्यासाठी लगेच डाउनलोड करा \n https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID+"\n\n"; // Change your message
                     intent.putExtra(Intent.EXTRA_TEXT,msg);
                     startActivity(Intent.createChooser(intent,"Share App with your friends"));
                 }catch (Exception e){

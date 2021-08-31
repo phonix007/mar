@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">Share Market Marathi</string>
+    <string name="app_name">शेअर मार्केट मराठी</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="mob_pub_banner">b195f8dd8ded45fe847ad89ed1d016da</string>
-    <string name="mob_pub_intrestitial">24534e1901884e398f1253216226017e</string>
-    <string name="moboub_reward">920b6145fb1546cf8b5cf2ac34638bb7</string>
+    <string name="mob_pub_banner">3d61ad459bde4fce90b93713cac8c9f5</string>
+    <string name="mob_pub_intrestitial">33290de3f57543de95812416bb85387f</string>
+    <string name="moboub_reward">76a018fe69034b40b532a340e2aafcbe</string>
 
     <string name="opennow_last"> तर मग लगेच अकाउंट ओपन करा आणि जिंका आमचा कडून एक फ्री गिफ्ट 🎁 </string>
 

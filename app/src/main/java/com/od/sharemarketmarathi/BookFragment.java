@@ -32,7 +32,7 @@ public class BookFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://bit.ly/3AZXD6f"))); // Add privacy policy url
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.amazon.in/Guide-Indian-Stock-Market-Jitendra/dp/B00GZMS8GK"))); // Add privacy policy url
                 }catch (Exception e){
                     Toast.makeText(getContext(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
                 }
@@ -45,7 +45,7 @@ public class BookFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://bit.ly/3AZXD6f"))); // Add privacy policy url
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.amazon.in/s?k=one+upon+wall+street+in+hindi&i=stripbooks&crid=2QFPELBCCKZBJ&sprefix=one+upon%2Cstripbooks%2C487&ref=nb_sb_ss_ts-doa-p_3_8"))); // Add privacy policy url
                 }catch (Exception e){
                     Toast.makeText(getContext(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
                 }
@@ -58,7 +58,7 @@ public class BookFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://bit.ly/3AZXD6f"))); // Add privacy policy url
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.amazon.in/dp/B07BKC529J/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1"))); // Add privacy policy url
                 }catch (Exception e){
                     Toast.makeText(getContext(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
                 }
@@ -71,7 +71,7 @@ public class BookFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://bit.ly/3AZXD6f"))); // Add privacy policy url
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.amazon.in/dp/B0789J2FKF/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1"))); // Add privacy policy url
                 }catch (Exception e){
                     Toast.makeText(getContext(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
                 }
@@ -84,7 +84,7 @@ public class BookFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://bit.ly/3AZXD6f"))); // Add privacy policy url
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.amazon.in/dp/B09B7SD9V8/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1"))); // Add privacy policy url
                 }catch (Exception e){
                     Toast.makeText(getContext(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
                 }
@@ -97,7 +97,7 @@ public class BookFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://bit.ly/3AZXD6f"))); // Add privacy policy url
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.amazon.in/Warren-Buffett-Nivesh-Rahasya-Hindi-ebook/dp/B085W2R9S6"))); // Add privacy policy url
                 }catch (Exception e){
                     Toast.makeText(getContext(), "Something Went Wrong", Toast.LENGTH_SHORT).show();
                 }

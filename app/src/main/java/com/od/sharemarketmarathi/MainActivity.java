@@ -27,7 +27,6 @@ import eu.dkaratzas.android.inapp.update.InAppUpdateStatus;
 
 public class MainActivity extends AppCompatActivity implements InAppUpdateManager.InAppUpdateHandler {
     InAppUpdateManager inAppUpdateManager;
-
     BottomNavigationView navigationView;
 
     private long backPressedTime;
