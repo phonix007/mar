@@ -106,8 +106,10 @@ public class Basic_Activity extends AppCompatActivity implements MoPubInterstiti
                         Intent intent = new Intent(Basic_Activity.this,Basic_Next_Activity.class);
                         String p = story_list.get(i);
                         String urlstr = img_list.get(i);
+                        String title = title_list.get(i);
                         intent.putExtra("key",p);
                         intent.putExtra("url",urlstr);
+                        intent.putExtra("title",title);
                         startActivity(intent);
                     }
                 });

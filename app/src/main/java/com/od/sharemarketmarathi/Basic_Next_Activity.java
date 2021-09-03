@@ -31,7 +31,7 @@ import com.mopub.mobileads.MoPubView;
 
 public class Basic_Next_Activity extends AppCompatActivity  {
 
-    TextView txt;
+    TextView txt,txttitle;
     ImageView img;
 
 
@@ -60,9 +60,15 @@ public class Basic_Next_Activity extends AppCompatActivity  {
 
         txt = findViewById(R.id.next_tetx);
         img = findViewById(R.id.next_image);
+        txttitle = findViewById(R.id.next_title);
+
         String t = getIntent().getStringExtra("key");
         String url = getIntent().getStringExtra("url");
+        String title = getIntent().getStringExtra("title");
+
         txt.setText(t);
+        txttitle.setText(title);
+
         Glide.with(this)
                 .load(url)
                 .into(img);

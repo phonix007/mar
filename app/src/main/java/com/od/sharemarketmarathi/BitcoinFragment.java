@@ -12,10 +12,6 @@ import android.webkit.WebView;
 
 public class BitcoinFragment extends Fragment {
 
-
-
-
-
     public BitcoinFragment() {
         // Required empty public constructor
     }
