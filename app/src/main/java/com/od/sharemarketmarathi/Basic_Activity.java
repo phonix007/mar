@@ -28,18 +28,17 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.mopub.common.MoPub;
-import com.mopub.common.SdkConfiguration;
-import com.mopub.common.SdkInitializationListener;
-import com.mopub.mobileads.MoPubErrorCode;
-import com.mopub.mobileads.MoPubInterstitial;
-import com.mopub.mobileads.MoPubView;
+import com.vungle.warren.InitCallback;
+import com.vungle.warren.LoadAdCallback;
+import com.vungle.warren.Vungle;
+import com.vungle.warren.error.VungleException;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
 // Category
-public class Basic_Activity extends AppCompatActivity implements MoPubInterstitial.InterstitialAdListener {
+public class Basic_Activity extends AppCompatActivity /* implements  MoPubInterstitial.InterstitialAdListener */ {
 
     DatabaseReference databaseReference;
     ListView listView;
@@ -52,8 +51,8 @@ public class Basic_Activity extends AppCompatActivity implements MoPubInterstiti
     ReviewManager manager;
     ReviewInfo reviewInfo;
 
-    private MoPubView moPubView;
-    private MoPubInterstitial mInterstitial;
+//    private MoPubView moPubView;
+//    private MoPubInterstitial mInterstitial;
 
     private Dialog loadingDialog;
 
@@ -63,8 +62,40 @@ public class Basic_Activity extends AppCompatActivity implements MoPubInterstiti
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic);
 
-        SdkConfiguration.Builder sdkConfiguration = new SdkConfiguration.Builder(getString(R.string.mob_pub_banner));
-        MoPub.initializeSdk(this, sdkConfiguration.build(), initSdkListener());
+        // sdk
+        Vungle.init(getString(R.string.vengal_appid), getApplicationContext(), new InitCallback() {  // change app id
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onError(VungleException exception) {
+
+            }
+
+            @Override
+            public void onAutoCacheAdAvailable(String placementId) {
+
+            }
+        });
+        // interstial
+        Vungle.loadAd(getString(R.string.vengal_interstial), new LoadAdCallback() {
+            @Override
+            public void onAdLoad(String placementId) {
+                if ( Vungle.canPlayAd(getString(R.string.vengal_interstial))){
+                    Vungle.playAd(getString(R.string.vengal_interstial),null,null);
+                }
+            }
+
+            @Override
+            public void onError(String placementId, VungleException exception) {
+
+            }
+        });
+
+//        SdkConfiguration.Builder sdkConfiguration = new SdkConfiguration.Builder(getString(R.string.mob_pub_banner));
+//        MoPub.initializeSdk(this, sdkConfiguration.build(), initSdkListener());
 
         loadingDialog = new Dialog(this);
         loadingDialog.setContentView(R.layout.loading);
@@ -122,66 +153,66 @@ public class Basic_Activity extends AppCompatActivity implements MoPubInterstiti
         });
 
     }
-
-    private SdkInitializationListener initSdkListener() {
-        return new SdkInitializationListener() {
-            @Override
-            public void onInitializationFinished() {
-                bannerAd();
-                intrestitialAd();
-            }
-        };
-    }
-
-    private void bannerAd(){
-
-        moPubView = (MoPubView) findViewById(R.id.adview);
-        moPubView.setAdUnitId(getString(R.string.mob_pub_banner)); // Enter your Ad Unit ID from www.mopub.com
-        moPubView.loadAd();
-
-    }
-
-    private void intrestitialAd(){
-        mInterstitial = new MoPubInterstitial(this, getString(R.string.mob_pub_intrestitial));
-        mInterstitial.setInterstitialAdListener(this);
-        mInterstitial.load();
-    }
-
-    @Override
-    protected void onDestroy() {
-        moPubView.destroy();
-        mInterstitial.destroy();
-        super.onDestroy();
-    }
-
-
-    @Override
-    public void onInterstitialLoaded(MoPubInterstitial moPubInterstitial) {
-        yourAppsShowInterstitialMethod();
-    }
-
-    @Override
-    public void onInterstitialFailed(MoPubInterstitial moPubInterstitial, MoPubErrorCode moPubErrorCode) {
-
-    }
-
-    @Override
-    public void onInterstitialShown(MoPubInterstitial moPubInterstitial) {
-
-    }
-
-    @Override
-    public void onInterstitialClicked(MoPubInterstitial moPubInterstitial) {
-
-    }
-
-    @Override
-    public void onInterstitialDismissed(MoPubInterstitial moPubInterstitial) {
-
-    }
-    private void yourAppsShowInterstitialMethod() {
-        if (mInterstitial.isReady()) {
-            mInterstitial.show();
-        }
-    }
+//
+//    private SdkInitializationListener initSdkListener() {
+//        return new SdkInitializationListener() {
+//            @Override
+//            public void onInitializationFinished() {
+//                bannerAd();
+//                intrestitialAd();
+//            }
+//        };
+//    }
+//
+//    private void bannerAd(){
+//
+//        moPubView = (MoPubView) findViewById(R.id.adview);
+//        moPubView.setAdUnitId(getString(R.string.mob_pub_banner)); // Enter your Ad Unit ID from www.mopub.com
+//        moPubView.loadAd();
+//
+//    }
+//
+//    private void intrestitialAd(){
+//        mInterstitial = new MoPubInterstitial(this, getString(R.string.mob_pub_intrestitial));
+//        mInterstitial.setInterstitialAdListener(this);
+//        mInterstitial.load();
+//    }
+//
+//    @Override
+//    protected void onDestroy() {
+//        moPubView.destroy();
+//        mInterstitial.destroy();
+//        super.onDestroy();
+//    }
+//
+//
+//    @Override
+//    public void onInterstitialLoaded(MoPubInterstitial moPubInterstitial) {
+//        yourAppsShowInterstitialMethod();
+//    }
+//
+//    @Override
+//    public void onInterstitialFailed(MoPubInterstitial moPubInterstitial, MoPubErrorCode moPubErrorCode) {
+//
+//    }
+//
+//    @Override
+//    public void onInterstitialShown(MoPubInterstitial moPubInterstitial) {
+//
+//    }
+//
+//    @Override
+//    public void onInterstitialClicked(MoPubInterstitial moPubInterstitial) {
+//
+//    }
+//
+//    @Override
+//    public void onInterstitialDismissed(MoPubInterstitial moPubInterstitial) {
+//
+//    }
+//    private void yourAppsShowInterstitialMethod() {
+//        if (mInterstitial.isReady()) {
+//            mInterstitial.show();
+//        }
+//    }
 }

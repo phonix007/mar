@@ -8,13 +8,34 @@
     tools:context=".Basic_Next_Activity"
     android:orientation="vertical">
 
-    <com.mopub.mobileads.MoPubView
-        android:id="@+id/adview"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        app:moPubAdSize="match_view">
+<!--    <com.mopub.mobileads.MoPubView-->
+<!--        android:id="@+id/adview"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="70dp"-->
+<!--        app:moPubAdSize="match_view">-->
+<!--    </com.mopub.mobileads.MoPubView>-->
 
-    </com.mopub.mobileads.MoPubView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+        <!--      <com.mopub.mobileads.MoPubView-->
+        <!--          android:id="@+id/adview"-->
+        <!--          android:layout_width="match_parent"-->
+        <!--          android:layout_height="70dp"-->
+        <!--          android:layout_alignParentBottom="true"-->
+        <!--          android:layout_marginBottom="6dp"-->
+        <!--          app:moPubAdSize="match_view">-->
+        <!--      </com.mopub.mobileads.MoPubView>-->
+
+        <com.startapp.sdk.ads.banner.Banner
+            android:id="@+id/startAppBanner"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"

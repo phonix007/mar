@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "790890961542",
+    "project_id": "stock-market-marathi",
+    "storage_bucket": "stock-market-marathi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:790890961542:android:9ad2eeaa3f95786e444f07",
+        "android_client_info": {
+          "package_name": "com.od.sharemarketmarathi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "790890961542-ps73fjf9ueuluk1u88l5h2r8egsquead.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAknzDCjKoup8Ean0Jtlf73wB43kmazQdE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "790890961542-ps73fjf9ueuluk1u88l5h2r8egsquead.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

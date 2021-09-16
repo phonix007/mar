@@ -7,24 +7,33 @@
     android:orientation="vertical"
     tools:context=".Basic_Activity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+        <!--      <com.mopub.mobileads.MoPubView-->
+        <!--          android:id="@+id/adview"-->
+        <!--          android:layout_width="match_parent"-->
+        <!--          android:layout_height="70dp"-->
+        <!--          android:layout_alignParentBottom="true"-->
+        <!--          android:layout_marginBottom="6dp"-->
+        <!--          app:moPubAdSize="match_view">-->
+        <!--      </com.mopub.mobileads.MoPubView>-->
+
+        <com.startapp.sdk.ads.banner.Banner
+            android:id="@+id/startAppBanner"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
    <ListView
        android:id="@+id/listView"
        android:layout_width="match_parent"
        android:padding="8dp"
-
        android:layout_height="wrap_content"/>
 
-   <RelativeLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content">
-      <com.mopub.mobileads.MoPubView
-          android:id="@+id/adview"
-          android:layout_width="match_parent"
-          android:layout_height="70dp"
-          android:layout_alignParentBottom="true"
-          android:layout_marginBottom="6dp"
-          app:moPubAdSize="match_view">
-      </com.mopub.mobileads.MoPubView>
-   </RelativeLayout>
 
 </LinearLayout>
