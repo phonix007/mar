@@ -10,14 +10,18 @@ import android.app.Dialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.startapp.sdk.adsbase.StartAppAd;
 import com.vungle.warren.InitCallback;
 import com.vungle.warren.LoadAdCallback;
 import com.vungle.warren.PlayAdCallback;
@@ -37,13 +41,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class CandleActivity extends AppCompatActivity  /* implements MoPubInterstitial.InterstitialAdListener */ {
+import eu.dkaratzas.android.inapp.update.InAppUpdateManager;
+import eu.dkaratzas.android.inapp.update.InAppUpdateStatus;
+
+public class CandleActivity extends AppCompatActivity implements  InAppUpdateManager.InAppUpdateHandler {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
 
     private RecyclerView recyclerView;
     private List<Candle_Model> list;
+
+    InAppUpdateManager inAppUpdateManager;
+    BottomNavigationView navigationView;
 
 //    private MoPubView moPubView;
 //    private MoPubInterstitial mInterstitial;
@@ -58,6 +68,8 @@ public class CandleActivity extends AppCompatActivity  /* implements MoPubInters
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_candle);
+
+        StartAppAd.showAd(this);
 
         // sdk
         Vungle.init(getString(R.string.vengal_appid), getApplicationContext(), new InitCallback() {  // change app id
@@ -90,60 +102,9 @@ public class CandleActivity extends AppCompatActivity  /* implements MoPubInters
             }
         });
 
-        final PlayAdCallback vunglePlayAdCallback = new PlayAdCallback() {
-            @Override
-            public void onAdStart(String id) {
-                // Ad experience started
-            }
 
-            @Override
-            public void onAdEnd(String placementId, boolean completed, boolean isCTAClicked) {
 
-                Log.d("cpm", "onAdRewarded: ");
-
-            }
-
-            @Override
-            public void onAdViewed(String id) {
-                // Ad has rendered
-            }
-
-            @Override
-            public void onAdEnd(String id) {
-
-                Log.d("cpm", "onAdRewarded: ");
-                // Ad experience ended
-            }
-
-            @Override
-            public void onAdClick(String id) {
-                // User clicked on ad
-            }
-
-            @Override
-            public void onAdRewarded(String id) {
-
-                Log.d("cpm", "onAdRewarded: ");
-            }
-
-            @Override
-            public void onAdLeftApplication(String id) {
-                // User has left app during an ad experience
-            }
-
-            @Override
-            public void creativeId(String creativeId) {
-                // Vungle creative ID to be displayed
-            }
-
-            @Override
-            public void onError(String id, VungleException exception) {
-
-                // Ad failed to play
-            }
-        };
-
-        Toast.makeText(this, "कॅन्डल स्टिक बद्दल वाचण्याआधी तुम्हालाही व्हिडिओ ॲड पाहावे लागेल", Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "कॅन्डल स्टिक बद्दल वाचण्याआधी तुम्हालाही व्हिडिओ ॲड पाहावे लागेल", Toast.LENGTH_LONG).show();
 
 //        MoPub.onCreate(this);
 //        rewardedAdListener = new MoPubRewardedAdListener() {
@@ -226,6 +187,33 @@ public class CandleActivity extends AppCompatActivity  /* implements MoPubInters
                 Toast.makeText(CandleActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onInAppUpdateError(int code, Throwable error) {
+
+    }
+
+    @Override
+    public void onInAppUpdateStatus(InAppUpdateStatus status) {
+
+        if (status.isDownloaded()) {
+            View view = getWindow().getDecorView().findViewById(android.R.id.content);
+            Snackbar snackbar = Snackbar.make(view,
+                    "App has been downloaded successfullly",
+                    Snackbar.LENGTH_INDEFINITE);
+            snackbar.setAction("", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    inAppUpdateManager.completeUpdate();
+
+                }
+            });
+
+            snackbar.show();
+
+        }
+
     }
 
 //    private SdkInitializationListener initSdkListener() {

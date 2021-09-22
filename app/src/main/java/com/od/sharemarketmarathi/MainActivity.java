@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,6 +43,14 @@ public class MainActivity extends AppCompatActivity implements InAppUpdateManage
         setContentView(R.layout.activity_main);
 
         StartAppAd.disableSplash();
+
+        // start your next activity
+
+//        Intent nextActivity = new Intent(this, Basic_Next_Activity.class);
+//        startActivity(nextActivity);
+
+        // and show interstitial ad
+
 
 //        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN); // hides status bar
 //        SdkConfiguration.Builder sdkConfiguration = new SdkConfiguration.Builder(getString(R.string.mob_pub_banner));

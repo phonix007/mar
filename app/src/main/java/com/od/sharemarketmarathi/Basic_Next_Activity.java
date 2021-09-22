@@ -16,12 +16,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.play.core.review.ReviewInfo;
 import com.google.android.play.core.review.ReviewManager;
 import com.google.android.play.core.review.ReviewManagerFactory;
 import com.google.android.play.core.tasks.OnCompleteListener;
 import com.google.android.play.core.tasks.OnSuccessListener;
 import com.google.android.play.core.tasks.Task;
+import com.startapp.sdk.adsbase.Ad;
+import com.startapp.sdk.adsbase.StartAppAd;
+import com.startapp.sdk.adsbase.adlisteners.AdEventListener;
+import com.startapp.sdk.adsbase.adlisteners.VideoListener;
+
+import eu.dkaratzas.android.inapp.update.InAppUpdateManager;
+import eu.dkaratzas.android.inapp.update.InAppUpdateStatus;
 //import com.mopub.common.MoPub;
 //import com.mopub.common.SdkConfiguration;
 //import com.mopub.common.SdkInitializationListener;
@@ -29,11 +38,13 @@ import com.google.android.play.core.tasks.Task;
 //import com.mopub.mobileads.MoPubInterstitial;
 //import com.mopub.mobileads.MoPubView;
 
-public class Basic_Next_Activity extends AppCompatActivity  {
+public class Basic_Next_Activity extends AppCompatActivity implements InAppUpdateManager.InAppUpdateHandler {
 
     TextView txt,txttitle;
     ImageView img;
 
+    InAppUpdateManager inAppUpdateManager;
+    BottomNavigationView navigationView;
 
     ReviewManager manager;
     ReviewInfo reviewInfo;
@@ -99,6 +110,33 @@ public class Basic_Next_Activity extends AppCompatActivity  {
             }
         });
         // review end
+    }
+
+    @Override
+    public void onInAppUpdateError(int code, Throwable error) {
+
+    }
+
+    @Override
+    public void onInAppUpdateStatus(InAppUpdateStatus status) {
+
+        if (status.isDownloaded()) {
+            View view = getWindow().getDecorView().findViewById(android.R.id.content);
+            Snackbar snackbar = Snackbar.make(view,
+                    "App has been downloaded successfullly",
+                    Snackbar.LENGTH_INDEFINITE);
+            snackbar.setAction("", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    inAppUpdateManager.completeUpdate();
+
+                }
+            });
+
+            snackbar.show();
+
+        }
+
     }
 
 //    private SdkInitializationListener initSdkListener() {

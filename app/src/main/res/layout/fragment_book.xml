@@ -82,9 +82,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    android:padding="10dp"
                     android:background="@drawable/basic_bg"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
                     <ImageView
                         android:id="@+id/wallstreet"
@@ -132,10 +132,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    android:padding="10dp"
                     android:background="@drawable/basic_bg"
+                    android:orientation="vertical"
 
-                    android:orientation="vertical">
+                    android:padding="10dp">
 
                     <ImageView
                         android:id="@+id/cr"
@@ -192,11 +192,8 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <com.startapp.sdk.ads.banner.Banner
-                    android:id="@+id/startAppBanner"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:padding="12dp"
+                <com.startapp.sdk.ads.banner.Mrec
+                    android:id="@+id/startAppMrec"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true" />
@@ -205,10 +202,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    android:padding="10dp"
                     android:background="@drawable/basic_bg"
+                    android:orientation="vertical"
 
-                    android:orientation="vertical">
+                    android:padding="10dp">
 
                     <ImageView
                         android:id="@+id/stock_rich"
@@ -256,10 +253,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    android:padding="10dp"
                     android:background="@drawable/basic_bg"
+                    android:orientation="vertical"
 
-                    android:orientation="vertical">
+                    android:padding="10dp">
 
                     <ImageView
                         android:id="@+id/itelle"
@@ -307,10 +304,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    android:padding="10dp"
                     android:background="@drawable/basic_bg"
+                    android:orientation="vertical"
 
-                    android:orientation="vertical">
+                    android:padding="10dp">
 
                     <ImageView
                         android:id="@+id/buff"
@@ -369,7 +366,7 @@
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"/>
+                    android:layout_height="100dp" />
 
             </LinearLayout>
 

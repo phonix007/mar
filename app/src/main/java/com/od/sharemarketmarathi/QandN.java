@@ -19,6 +19,7 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.startapp.sdk.adsbase.StartAppAd;
 import com.vungle.warren.InitCallback;
 import com.vungle.warren.LoadAdCallback;
 import com.vungle.warren.Vungle;
@@ -51,7 +52,7 @@ public class QandN extends AppCompatActivity /* implements MoPubInterstitial.Int
 
 //        SdkConfiguration.Builder sdkConfiguration = new SdkConfiguration.Builder(getString(R.string.mob_pub_banner));
 //        MoPub.initializeSdk(this, sdkConfiguration.build(), initSdkListener());
-
+        StartAppAd.showAd(this);
         // sdk
         Vungle.init(getString(R.string.vengal_appid), getApplicationContext(), new InitCallback() {  // change app id
             @Override
