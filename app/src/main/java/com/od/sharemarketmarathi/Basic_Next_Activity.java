@@ -28,6 +28,10 @@ import com.startapp.sdk.adsbase.Ad;
 import com.startapp.sdk.adsbase.StartAppAd;
 import com.startapp.sdk.adsbase.adlisteners.AdEventListener;
 import com.startapp.sdk.adsbase.adlisteners.VideoListener;
+import com.vungle.warren.InitCallback;
+import com.vungle.warren.LoadAdCallback;
+import com.vungle.warren.Vungle;
+import com.vungle.warren.error.VungleException;
 
 import eu.dkaratzas.android.inapp.update.InAppUpdateManager;
 import eu.dkaratzas.android.inapp.update.InAppUpdateStatus;
@@ -58,6 +62,38 @@ public class Basic_Next_Activity extends AppCompatActivity implements InAppUpdat
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic_next);
+
+        // sdk
+        Vungle.init(getString(R.string.vengal_appid), getApplicationContext(), new InitCallback() {  // change app id
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onError(VungleException exception) {
+
+            }
+
+            @Override
+            public void onAutoCacheAdAvailable(String placementId) {
+
+            }
+        });
+        // interstial
+        Vungle.loadAd(getString(R.string.vengal_interstial), new LoadAdCallback() {
+            @Override
+            public void onAdLoad(String placementId) {
+                if ( Vungle.canPlayAd(getString(R.string.vengal_interstial))){
+                    Vungle.playAd(getString(R.string.vengal_interstial),null,null);
+                }
+            }
+
+            @Override
+            public void onError(String placementId, VungleException exception) {
+
+            }
+        });
 
 //        SdkConfiguration.Builder sdkConfiguration = new SdkConfiguration.Builder(getString(R.string.mob_pub_banner));
 //        MoPub.initializeSdk(this, sdkConfiguration.build(), initSdkListener());

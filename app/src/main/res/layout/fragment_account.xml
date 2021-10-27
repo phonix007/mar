@@ -38,6 +38,61 @@
                     android:padding="10dp">
 
                     <ImageView
+                        android:id="@+id/grow_logo"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="10dp"
+                        android:text="Groww"
+                        android:textColor="@color/black"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="10dp"
+                        android:text="तुम्हाला माहित आहे का? \n
+
+\nहा मेसेज वाचायच्या आत तुम्हाला ₹१०० रुपये भेटतील...
+\nकसे काय?
+\nGroww वर ऑफर चालू आहे जर तुम्ही आज Groww मध्ये अकाउंट ओपन केलं तर तुम्हाला 100 रुपये भेटतील अकाउंट ओपनिंग प्रोसेस फार सोपी आहे Groww  तुम्हाला कुठल्याही प्रकारचे शेअर खरेदी आणि विक्री वर ब्रोकरेज चार्जेस लावत नाही ट्रेडिंग चार्जेस 20 रुपये पर ऑर्डर आहे व तुम्ही अमेरिकेतल्या मार्केटमधील स्टॉक पण बाय करू शकतात तेही अगदी कमी पैशात व कमी ब्रोकरेज मध्ये तर लगेच मग Groww मध्ये अकाउंट ओपन करा आणि मिळवा 100 रुपये अगदी मोफत!
+\n तर मग लगेच Open Account (ओपन अकाउंट) बटणावर दाबून अकाउंट ओपन करा"
+                        android:textColor="@color/black"
+                        android:textSize="24sp" />
+
+                    <Button
+                        android:id="@+id/open_groww"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/button_bg"
+                        android:drawableRight="@drawable/open"
+                        android:drawablePadding="10dp"
+                        android:padding="10dp"
+                        android:text="Open Accpount"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/basic_bg"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <ImageView
                         android:id="@+id/upstox_logo"
                         android:layout_width="200dp"
                         android:layout_height="200dp"
@@ -58,7 +113,27 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:padding="10dp"
-                        android:text="@string/upstox_fe"
+                        android:text="शेअर मार्केटमध्ये डीमॅट खाते उघडण्यासाठी Upstox हे सर्वोत्तम व्यासपीठ आहे.\n Upstox फ्लॅट रु.20
+        ट्रेड  रकमेची पर्वा न करता 20 प्रति ऑर्डर त्यांना सर्वात परवडणारे व्यासपीठ बनवते. डिजिटल गोल्ड,
+        आयपीओ आणि म्युच्युअल फंडांवरही शून्य ब्रोकरेज आहेत. नवशिक्यांसाठी आणि ज्यांना जलद खाते सक्रिय करण्याची
+        आवश्यकता आहे त्यांच्यासाठी सर्वोत्तम.\n
+
+        महत्वाची वैशिष्टे\n
+      \n 1.सोपे, जलद आणि सोपे इंटरफेस
+\n2. इक्विटी वर ₹ 20/ऑर्डर पर्यंत
+\n3. 250+ इंडिकेटर्स  100+ चार्ट
+\n4. 2000+ म्युच्युअल फंड योजना
+\n5. डायरेक्ट म्युच्युअल फंडावर जास्त परतावा मिळवा
+\n6. Invest ₹500 पेक्षा कमी गुंतवणूक करा
+\n7. 99.9% शुद्ध 24 के सोने
+\n8. ₹1 पेक्षा कमी गुंतवणूक करा
+\n9. कोठूनही रिअल-टाइम खरेदी/ विक्री करा
+\n10 स्टॉकमध्ये सूचीबद्ध होण्यापूर्वी त्यांची गुंतवणूक करा
+\n11. UPI द्वारे IPO साठी अर्ज करा
+\n12. आपला IPO अर्ज सहज ट्रॅक करा
+\n13. प्रति ऑर्डर फक्त ₹20* पर्यंत भरा
+\n14. TradingView आणि ChartsIQ चार्ट लायब्ररी
+       \n तर मग लगेच Open Account (ओपन अकाउंट) बटणावर दाबून अकाउंट ओपन करा"
                         android:textColor="@color/black"
                         android:textSize="24sp" />
 
@@ -108,7 +183,17 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:padding="10dp"
-                        android:text="@string/angel_fe"
+                        android:text="\nAngel Broking भारतातील आणखी एक अत्यंत लोकप्रिय स्टॉक ब्रोकर आहे आणि संपूर्ण भारतात त्याची उपस्थिती आहे. आपण एंजेल ब्रोकिंगसह आयुष्यभर विनामूल्य डीमॅट खाते उघडू शकता आणि विनामूल्य चित्रपटाचे तिकीट मिळवू शकता.
+
+\nAngel Broking मध्ये कोणतेही अग्रिम पेमेंट नाही आणि प्रारंभिक मार्जिन मनी डिपॉझिटवर अवलंबून असते. गुंतवणूकीच्या कोणत्याही आकाराची पर्वा न करता किमान ब्रोकरेज शुल्क रु. 30. तथापि, निधी हस्तांतरित करणे खूपच अखंड आहे.
+
+\nमहत्वाची वैशिष्टे
+
+\n1. बर्याच वर्षांच्या चांगल्या ट्रॅक रेकॉर्डसह एक विश्वसनीय नाव
+\n2. प्लॅटफॉर्म खूप प्रगत आहे
+\n3. चांगले संशोधन टिपा
+\n4. विनामूल्य आजीवन डीमॅट खाते
+  \n  तर मग लगेच Open Account (ओपन अकाउंट) बटणावर दाबून अकाउंट ओपन करा"
                         android:textColor="@color/black"
                         android:textSize="24sp" />
 
@@ -165,7 +250,19 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:padding="10dp"
-                        android:text="@string/zerodha_fe"
+                        android:text="\nडिमॅट खाते उघडण्यासाठी भारतीयांमध्ये Zerodha हे आणखी एक लोकप्रिय व्यासपीठ आहे. कंपनी प्रति ऑर्डर 20 किंवा 0.03% (जे कमी असेल) फ्लॅट आकारते. जर Upstox नसेल तर Zerodha हा तुमचा अंतिम पर्याय असावा.
+
+\n इंटरफेसकडे जाताना, Zerodha कडे निश्चितपणे वापरकर्ता-अनुकूल इंटरफेस आहे, आणि आपण स्टॉक ट्रेडिंगसाठी पूर्णपणे नवीन असलात तरीही आपल्याला त्याची सवय होण्यास वेळ लागू नये. याशिवाय, ते वापरकर्त्यांना तांत्रिक विश्लेषणासाठी प्रगत चार्ट, निर्देशक आणि साधने प्रदान करते.
+
+\nमहत्वाची वैशिष्टे
+
+\n1. वितरणावर शून्य ब्रोकेरज
+\n2. चांगले मार्जिन; 4 ते 15 वेळा पर्यंत
+\n3. जास्तीत जास्त ब्रोकेरज शुल्क रु.20 प्रत्येक निष्पादित ऑर्डरसाठी
+\n4. हे तांत्रिक विश्लेषणासाठी प्रगत चार्ट, निर्देशक आणि इतर साधनांसह येते
+\n5. खाते उघडण्यासाठी रु.300 शुल्क.
+\n6. Zerodha Varsity तुम्हाला शेअर बाजारातील सर्व मूलभूत गोष्टी शिकण्यास मदत करते.
+    \nतर मग लगेच Open Account (ओपन अकाउंट) बटणावर दाबून अकाउंट ओपन करा"
                         android:textColor="@color/black"
                         android:textSize="24sp" />
 
@@ -195,6 +292,16 @@
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:paddingTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="वरील सर्व माहिती ऑक्टोंबर 2021 रोजी त्या अधिकृत वेबसाइटवरून घेतलेली आहे भविष्यात चार्जेस मध्ये बदल होऊ शकतो म्हणून अकाउंट ओपन करण्याआधी नवीन चार्जेस किती आहे याची नोंद घ्यावी."
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="italic" />
 
                 <Space
                     android:layout_width="match_parent"

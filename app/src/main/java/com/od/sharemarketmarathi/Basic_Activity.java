@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.play.core.review.ReviewInfo;
 import com.google.android.play.core.review.ReviewManager;
 import com.google.android.play.core.review.ReviewManagerFactory;
@@ -38,22 +39,20 @@ import com.vungle.warren.error.VungleException;
 import java.util.ArrayList;
 import java.util.List;
 
+import eu.dkaratzas.android.inapp.update.InAppUpdateManager;
+import eu.dkaratzas.android.inapp.update.InAppUpdateStatus;
+
 // Category
-public class Basic_Activity extends AppCompatActivity /* implements  MoPubInterstitial.InterstitialAdListener */ {
+public class Basic_Activity extends AppCompatActivity implements  InAppUpdateManager.InAppUpdateHandler  {
 
     DatabaseReference databaseReference;
     ListView listView;
     List<String> title_list, story_list, img_list;
     ArrayAdapter<String> adapter;
     MyBasic myBasic;
-    private long backPressedTime;
-    private Toast backToast;
+    InAppUpdateManager inAppUpdateManager;
 
-    ReviewManager manager;
-    ReviewInfo reviewInfo;
 
-//    private MoPubView moPubView;
-//    private MoPubInterstitial mInterstitial;
 
     private Dialog loadingDialog;
 
@@ -123,66 +122,32 @@ public class Basic_Activity extends AppCompatActivity /* implements  MoPubInters
         });
 
     }
-//
-//    private SdkInitializationListener initSdkListener() {
-//        return new SdkInitializationListener() {
-//            @Override
-//            public void onInitializationFinished() {
-//                bannerAd();
-//                intrestitialAd();
-//            }
-//        };
-//    }
-//
-//    private void bannerAd(){
-//
-//        moPubView = (MoPubView) findViewById(R.id.adview);
-//        moPubView.setAdUnitId(getString(R.string.mob_pub_banner)); // Enter your Ad Unit ID from www.mopub.com
-//        moPubView.loadAd();
-//
-//    }
-//
-//    private void intrestitialAd(){
-//        mInterstitial = new MoPubInterstitial(this, getString(R.string.mob_pub_intrestitial));
-//        mInterstitial.setInterstitialAdListener(this);
-//        mInterstitial.load();
-//    }
-//
-//    @Override
-//    protected void onDestroy() {
-//        moPubView.destroy();
-//        mInterstitial.destroy();
-//        super.onDestroy();
-//    }
-//
-//
-//    @Override
-//    public void onInterstitialLoaded(MoPubInterstitial moPubInterstitial) {
-//        yourAppsShowInterstitialMethod();
-//    }
-//
-//    @Override
-//    public void onInterstitialFailed(MoPubInterstitial moPubInterstitial, MoPubErrorCode moPubErrorCode) {
-//
-//    }
-//
-//    @Override
-//    public void onInterstitialShown(MoPubInterstitial moPubInterstitial) {
-//
-//    }
-//
-//    @Override
-//    public void onInterstitialClicked(MoPubInterstitial moPubInterstitial) {
-//
-//    }
-//
-//    @Override
-//    public void onInterstitialDismissed(MoPubInterstitial moPubInterstitial) {
-//
-//    }
-//    private void yourAppsShowInterstitialMethod() {
-//        if (mInterstitial.isReady()) {
-//            mInterstitial.show();
-//        }
-//    }
+
+    @Override
+    public void onInAppUpdateError(int code, Throwable error) {
+
+    }
+
+    @Override
+    public void onInAppUpdateStatus(InAppUpdateStatus status) {
+
+        if (status.isDownloaded()) {
+            View view = getWindow().getDecorView().findViewById(android.R.id.content);
+            Snackbar snackbar = Snackbar.make(view,
+                    "App has been downloaded successfullly",
+                    Snackbar.LENGTH_INDEFINITE);
+            snackbar.setAction("", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    inAppUpdateManager.completeUpdate();
+
+                }
+            });
+
+            snackbar.show();
+
+        }
+
+    }
+
 }

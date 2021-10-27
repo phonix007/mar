@@ -55,11 +55,6 @@ public class CandleActivity extends AppCompatActivity implements  InAppUpdateMan
     InAppUpdateManager inAppUpdateManager;
     BottomNavigationView navigationView;
 
-//    private MoPubView moPubView;
-//    private MoPubInterstitial mInterstitial;
-//    private MoPubReward moPubReward;
-//    private MoPubRewardedAdListener rewardedAdListener;
-
 
     private Dialog loadingDialog;
 
@@ -106,52 +101,6 @@ public class CandleActivity extends AppCompatActivity implements  InAppUpdateMan
 
 //        Toast.makeText(this, "कॅन्डल स्टिक बद्दल वाचण्याआधी तुम्हालाही व्हिडिओ ॲड पाहावे लागेल", Toast.LENGTH_LONG).show();
 
-//        MoPub.onCreate(this);
-//        rewardedAdListener = new MoPubRewardedAdListener() {
-//            @Override
-//            public void onRewardedAdLoadSuccess(String s) {
-//                MoPubRewardedAds.showRewardedAd(getString(R.string.moboub_reward));
-//            }
-//
-//            @Override
-//            public void onRewardedAdLoadFailure(String s, MoPubErrorCode moPubErrorCode) {
-//
-//                MoPubRewardedAds.loadRewardedAd(getString(R.string.moboub_reward));
-//            }
-//
-//            @Override
-//            public void onRewardedAdStarted(String s) {
-//
-//            }
-//
-//            @Override
-//            public void onRewardedAdShowError(String s, MoPubErrorCode moPubErrorCode) {
-//                Toast.makeText(CandleActivity.this, moPubErrorCode.getIntCode(), Toast.LENGTH_SHORT).show();
-//
-//            }
-//
-//            @Override
-//            public void onRewardedAdClicked(String s) {
-//
-//            }
-//
-//            @Override
-//            public void onRewardedAdClosed(String s) {
-//                yourAppsShowInterstitialMethod();
-//            }
-//
-//            @Override
-//            public void onRewardedAdCompleted(Set<String> set, MoPubReward moPubReward) {
-//
-//
-//            }
-//        };
-//
-//        MoPubRewardedAds.setRewardedAdListener(rewardedAdListener);
-//
-//        SdkConfiguration.Builder sdkConfiguration = new SdkConfiguration.Builder(getString(R.string.mob_pub_banner));
-//        MoPub.initializeSdk(this, sdkConfiguration.build(), initSdkListener());
-//        MoPubRewardedAds.loadRewardedAd(getString(R.string.moboub_reward));
 
         loadingDialog = new Dialog(this);
         loadingDialog.setContentView(R.layout.loading);
@@ -215,73 +164,5 @@ public class CandleActivity extends AppCompatActivity implements  InAppUpdateMan
         }
 
     }
-
-//    private SdkInitializationListener initSdkListener() {
-//        return new SdkInitializationListener() {
-//            @Override
-//            public void onInitializationFinished() {
-//                bannerAd();
-//                intrestitialAd();
-//                rewardedAd();
-//            }
-//        };
-//    }
-//
-//    private void bannerAd() {
-//
-//        moPubView = (MoPubView) findViewById(R.id.adview);
-//        moPubView.setAdUnitId(getString(R.string.mob_pub_banner)); // Enter your Ad Unit ID from www.mopub.com
-//        moPubView.loadAd();
-//
-//    }
-//
-//    private void intrestitialAd() {
-//        mInterstitial = new MoPubInterstitial(this, getString(R.string.mob_pub_intrestitial));
-//        mInterstitial.setInterstitialAdListener(this);
-//        mInterstitial.load();
-//    }
-//
-//    private void rewardedAd() {
-//
-//        MoPubRewardedAds.loadRewardedAd(getString(R.string.moboub_reward));
-//    }
-//
-//    @Override
-//    protected void onDestroy() {
-//        moPubView.destroy();
-//        mInterstitial.destroy();
-//        super.onDestroy();
-//    }
-//
-//    @Override
-//    public void onInterstitialLoaded(MoPubInterstitial moPubInterstitial) {
-//
-//    }
-//
-//    @Override
-//    public void onInterstitialFailed(MoPubInterstitial moPubInterstitial, MoPubErrorCode moPubErrorCode) {
-//
-//    }
-//
-//    @Override
-//    public void onInterstitialShown(MoPubInterstitial moPubInterstitial) {
-//
-//    }
-//
-//    @Override
-//    public void onInterstitialClicked(MoPubInterstitial moPubInterstitial) {
-//
-//    }
-//
-//    @Override
-//    public void onInterstitialDismissed(MoPubInterstitial moPubInterstitial) {
-//
-//    }
-//
-//    private void yourAppsShowInterstitialMethod() {
-//        if (mInterstitial.isReady()) {
-//            mInterstitial.show();
-//        }
-//    }
 
 }
